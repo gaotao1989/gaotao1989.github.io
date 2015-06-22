@@ -4,33 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>利用Github和Hexo快速搭建博客系统 | 勤学善思</title>
+    <title>利用Github和Hexo快速搭建博客系统 | Alvin&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Alvin">
     
 
     
-    <meta name="description" content="本文记录利用Hexo和Github搭建简单博客系统的基本方法。">
+    <meta name="description" content="本文记录利用Hexo和Github搭建静态博客系统的方法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Github和Hexo快速搭建博客系统">
 <meta property="og:url" content="http://yoursite.com/2015/06/07/2015-6-7-How-to-build-blog/index.html">
-<meta property="og:site_name" content="勤学善思">
-<meta property="og:description" content="本文记录利用Hexo和Github搭建简单博客系统的基本方法。">
-<meta property="og:updated_time" content="2015-06-07T14:12:12.183Z">
+<meta property="og:site_name" content="Alvin's Blog">
+<meta property="og:description" content="本文记录利用Hexo和Github搭建静态博客系统的方法。">
+<meta property="og:updated_time" content="2015-06-22T13:13:16.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Github和Hexo快速搭建博客系统">
-<meta name="twitter:description" content="本文记录利用Hexo和Github搭建简单博客系统的基本方法。">
+<meta name="twitter:description" content="本文记录利用Hexo和Github搭建静态博客系统的方法。">
 
     
-    <link rel="alternative" href="/atom.xml" title="勤学善思" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Alvin&#39;s Blog" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -40,13 +35,9 @@
       
 <div>
 		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="勤学善思" title="勤学善思"/></a>
-			</div>
-			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="勤学善思">勤学善思</a></h1>
-				<h2 class="blog-motto">勤于学习，善于思考，乐于分享</h2>
+				<h1 class="site-name"><a href="/" title="Alvin&#39;s Blog">Alvin&#39;s Blog</a></h1>
+				<h2 class="blog-motto">一位程序猿的学习总结</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
@@ -56,7 +47,7 @@
 					 
 						<li><a href="/">主页</a></li>
 					
-						<li><a href="/archives">文章列表</a></li>
+						<li><a href="/archives">归档</a></li>
 					
 						<li><a href="/about">关于</a></li>
 					
@@ -96,35 +87,38 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地测试"><span class="toc-number">3.</span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署到github"><span class="toc-number">4.</span> <span class="toc-text">部署到github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更换主题"><span class="toc-number">5.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写第一篇文章"><span class="toc-number">6.</span> <span class="toc-text">写第一篇文章</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Hexo与Github？"><span class="toc-number">2.</span> <span class="toc-text">什么是Hexo与Github？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">3.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地测试"><span class="toc-number">4.</span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署到github"><span class="toc-number">5.</span> <span class="toc-text">部署到github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更换主题"><span class="toc-number">6.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写第一篇文章"><span class="toc-number">7.</span> <span class="toc-text">写第一篇文章</span></a></li></ol>
 		
 		</div>
 		
-		<p>想开设自己的个人博客，又不想花费太多精力对博客系统进行维护。本文即介绍如何利用Hexo与Github搭建简单的个人博客系统。<br><a id="more"></a></p>
-<h1 id="前言">前言</h1><p>一直以来想开通个人技术博客，这不仅有助于进行知识管理，还能够督促自己多思考。开通个人博客可以有多种选择：1）在新浪、科学网等网站上开通。在这些大型网站上开通博客，可以免除系统维护的麻烦，但是这些文档的可移植性不强; 2) 自己购买服务器或云服务，利用一些开源博客系统如wordpress搭建自己的独立博客。这种方法需要管理者自己进行一些维护工作。<br>我开设博客的主要目的是进行知识管理，因而希望能够把主要精力集中在撰写总结文章上，而不是花费在繁琐的管理工作上。在对比了多种方案后，我选择了Hexo+Github方案。Hexo是一个静态博客系统框架，用户通过Markdown语法进行博客的编写，利用hexo就可以生成相应的网页文件。同时，我们可以利用Github提供的免费Pages部署博客系统。</p>
-<h1 id="安装Hexo">安装Hexo</h1><p>我使用的操作系统是ubuntu 12.04，首先需要安装nodejs与npm，然后通过npm安装hexo，然后就可以通过hexo创建博客系统，最后再部署到github上，即大功告成。</p>
+		<p>很早就想搭建技术博客，终于在折腾了一天后利用Hexo与Github搭建好了免费博客系统，这篇文章将记录搭建过程。<br><a id="more"></a></p>
+<h1 id="前言">前言</h1><p>萌生开设技术博客的想法已经很久，也注册过很多博客帐号，如新浪，CSDN等等，最近还在新浪SAE上利用Wordpress搭建过博客系统，然而一直没有找到满意的方式。个人对博客系统有几点要求：1）首先必须免费或者开销非常低。像土豪们租用服务器搭建独立博客，不是我想要的。2）其次管理维护必须非常简单，我可不想花费太多时间于博客系统本身。3）最后博客的内容应该很容易迁移。技术博客更多的是学习总结，所以我希望对这些知识具有控制权。利用Hexo与Github基本能够满足我的这些需求。</p>
+<h1 id="什么是Hexo与Github？">什么是Hexo与Github？</h1><p><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>是一个基于nodejs的静态博客网站生成器，作者是来自台湾的Tommy Chen。其中<a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a>是一套用来编写高性能网络服务器的JavaScript工具包。Hexo的特点包括：快速、简单; 支持<a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="external">Markdown</a>（Markdown是一种可以使用普通文本编辑器编写的标记语言，编写博客非常方便）;只需要一条命令就可以部署到GitHub Pages上;另外，Hexo也可以兼容Windows, Mac与Linux系统。</p>
+<p><a href="https://github.com/" target="_blank" rel="external">Github</a>是一个开源代码库及版本控制系统，Github支持Pages用于展示个人主页或项目主页，利用Github搭建博客的原理就是把博客系统挂到个人主页或者项目主页上。</p>
+<h1 id="安装Hexo">安装Hexo</h1><ul>
+<li><p>安装nodejs与npm<br>我使用的操作系统是ubuntu 12.04，首先需要安装nodejs与npm，安装命令如下：</p>
+<pre><code>sudo apt-get <span class="operator"><span class="keyword">install</span> nodejs
+sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> npm</span>
+</code></pre></li>
+</ul>
+<p>如果这样安装得nodejs不满足版本要求，也可以自行下载源码包进行安装。</p>
 <ul>
-<li><p>安装node<br>ubuntu下安装node比较简单，通过apt-get安装就行，但是这样安装得版本不一定满足要求，如果需要安装最新版本，可以从源代码采用经典的./configure &amp;&amp; make &amp;&amp; make install安装</p>
-<pre><code>sudo apt-<span class="keyword">get</span> install nodejs
-</code></pre></li>
-<li><p>安装npm<br>ubuntu下安装npm比较简答，命令如下：</p>
-<pre><code>sudo apt-<span class="keyword">get</span> install npm
-</code></pre></li>
-<li><p>安装hexo<br>npm安装好后就可以通过npm安装hexo，命令如下：</p>
+<li><p>安装Hexo<br>npm安装好后就可以通过npm安装hexo，命令如下：</p>
 <pre><code>sudo npm <span class="keyword">install</span> -g hexo
 </code></pre></li>
-<li><p>初始化hexo<br>安装好hexo后，就可以创建一个博客目录，然后在该目录下输入如下命令：</p>
+<li><p>初始化Hexo<br>安装好hexo后，就可以创建一个博客目录，然后在该目录下输入如下命令，注意执行初始化命令后需要利用npm安装相应的依赖程序：</p>
 <pre><code>hexo init
 sudo npm <span class="keyword">install</span>
 </code></pre></li>
 </ul>
-<h1 id="本地测试">本地测试</h1><pre><code>hexo generate
+<h1 id="本地测试">本地测试</h1><p>Hexo本地安装完成后就可以进行本地测试了，首先需要用hexo generate命令生成网页，然后利用hexo server命令启动本地服务器：</p>
+<pre><code>hexo generate
 hexo <span class="keyword">server</span>
 </code></pre><h1 id="部署到github">部署到github</h1><p>部署到github首先需要注册github帐号，然后创建repositories，并在master中创建Pages，然后修改hexo中的配置文件_config.yml如下所示：</p>
 <pre><code><span class="attribute">type</span>: <span class="string">git</span>
 <span class="attribute">repository</span>: <span class="string">https://github.com/gaotao1989/gaotao1989.github.io</span>
 <span class="attribute">branch</span>: <span class="string">master</span>
-</code></pre><p>早期有些版本中type应该写成github，修改之后需要运行如下命令：</p>
+</code></pre><p>需要注意得是早期有些版本中type应该写成github，修改之后需要运行如下命令：</p>
 <pre><code>sudo npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
 </code></pre><p>然后就可以通过如下命令发布到Github的Pages上：</p>
 <pre><code><span class="title">hexo</span> generate
@@ -156,7 +150,7 @@ tags: [tag1,tag2,tag3]    # 文章标签
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Github/">Github</a><a href="/tags/Hexo/">Hexo</a><a href="/tags/博客/">博客</a>
+  <span></span> <a href="/tags/学习/">学习</a><a href="/tags/总结/">总结</a>
   </div>
 
 </div>
@@ -165,7 +159,7 @@ tags: [tag1,tag2,tag3]    # 文章标签
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/06/07/2015-6-7-How-to-build-blog/" data-title="利用Github和Hexo快速搭建博客系统 | 勤学善思" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/06/07/2015-6-7-How-to-build-blog/" data-title="利用Github和Hexo快速搭建博客系统 | Alvin&#39;s Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -184,7 +178,7 @@ tags: [tag1,tag2,tag3]    # 文章标签
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地测试"><span class="toc-number">3.</span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署到github"><span class="toc-number">4.</span> <span class="toc-text">部署到github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更换主题"><span class="toc-number">5.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写第一篇文章"><span class="toc-number">6.</span> <span class="toc-text">写第一篇文章</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Hexo与Github？"><span class="toc-number">2.</span> <span class="toc-text">什么是Hexo与Github？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">3.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地测试"><span class="toc-number">4.</span> <span class="toc-text">本地测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署到github"><span class="toc-number">5.</span> <span class="toc-text">部署到github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更换主题"><span class="toc-number">6.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写第一篇文章"><span class="toc-number">7.</span> <span class="toc-text">写第一篇文章</span></a></li></ol>
  
   </div>
 
@@ -211,15 +205,17 @@ tags: [tag1,tag2,tag3]    # 文章标签
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+				<li><a href="/tags/学习/" title="学习">学习<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Github/" title="Github">Github<sup>1</sup></a></li>
+				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/博客/" title="博客">博客<sup>1</sup></a></li>
+		
+			
+		
 			
 		
 		</ul>
@@ -232,24 +228,11 @@ tags: [tag1,tag2,tag3]    # 文章标签
         
           <li>
             
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            	<a href="http://www.mpi-forum.org/" target="_blank" title="MPI论坛">MPI论坛</a>
             
           </li>
         
     </ul>
-</div>
-
-  
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -257,15 +240,10 @@ tags: [tag1,tag2,tag3]    # 文章标签
     </div>
     <footer><div id="footer" >
 	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Welcome to visit my blog! <br/>
+			Thank you!</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
