@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://gaotao1989.github.io/2015/06/07/2015-6-7-How-to-build-blog/index.html">
 <meta property="og:site_name" content="Alvin's Blog">
 <meta property="og:description" content="本文记录利用Hexo和Github搭建静态博客系统的方法。">
-<meta property="og:updated_time" content="2015-06-22T13:13:16.283Z">
+<meta property="og:updated_time" content="2015-06-22T14:18:52.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Github和Hexo快速搭建博客系统">
 <meta name="twitter:description" content="本文记录利用Hexo和Github搭建静态博客系统的方法。">
@@ -99,9 +99,9 @@
 <li><p>安装nodejs与npm<br>我使用的操作系统是ubuntu 12.04，首先需要安装nodejs与npm，安装命令如下：</p>
 <pre><code>sudo apt-get <span class="operator"><span class="keyword">install</span> nodejs
 sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> npm</span>
-</code></pre></li>
+</code></pre><p>  如果这样安装得nodejs不满足版本要求，也可以自行下载源码包进行安装。</p>
+</li>
 </ul>
-<p>如果这样安装得nodejs不满足版本要求，也可以自行下载源码包进行安装。</p>
 <ul>
 <li><p>安装Hexo<br>npm安装好后就可以通过npm安装hexo，命令如下：</p>
 <pre><code>sudo npm <span class="keyword">install</span> -g hexo
@@ -125,8 +125,9 @@ hexo <span class="keyword">server</span>
 hexo deploy
 </code></pre><h1 id="更换主题">更换主题</h1><p>互联网上提供有多种hexo主题，可以通过<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">这里</a>查看。<br>选好自己喜欢的主题之后，通过如下命令下载到本地目录，然后在_config.yml文件中选用相应得主题即可。</p>
 <pre><code>git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
-</code></pre><p>我使用如下命令获得jacman主题：<br>    git clone <a href="https://github.com/wuchong/jacman.git" target="_blank" rel="external">https://github.com/wuchong/jacman.git</a> themes/jacman</p>
-<h1 id="写第一篇文章">写第一篇文章</h1><p>配置好博客的外观就可以开始写博客了，通过如下命令新建文章：</p>
+</code></pre><p>我使用如下命令获得jacman主题：</p>
+<pre><code>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/wuchong</span><span class="regexp">/jacman.git themes/jacman</span>
+</code></pre><h1 id="写第一篇文章">写第一篇文章</h1><p>配置好博客的外观就可以开始写博客了，通过如下命令新建文章：</p>
 <pre><code>hexo <span class="keyword">new</span> &lt;name&gt;
 </code></pre><p>新建文章实际上是在source/_posts目录下新建一个.md文件，该文件采用Markdown语法编写。</p>
 <pre><code>title: 第一篇文章         # 文章标题
