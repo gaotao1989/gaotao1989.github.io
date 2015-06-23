@@ -1,0 +1,464 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>利用Git进行版本控制 | Alvin&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Alvin">
+    
+
+    
+    <meta name="description" content="本文记录Git版本控制系统的使用方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Git进行版本控制">
+<meta property="og:url" content="http://gaotao1989.github.io/2015/06/23/2015-6-23-Git-Usage/index.html">
+<meta property="og:site_name" content="Alvin's Blog">
+<meta property="og:description" content="本文记录Git版本控制系统的使用方法">
+<meta property="og:updated_time" content="2015-06-23T14:09:47.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Git进行版本控制">
+<meta name="twitter:description" content="本文记录Git版本控制系统的使用方法">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Alvin&#39;s Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Alvin&#39;s Blog">Alvin&#39;s Blog</a></h1>
+				<h2 class="blog-motto">一位程序猿的学习总结</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gaotao1989.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/23/2015-6-23-Git-Usage/" title="利用Git进行版本控制" itemprop="url">利用Git进行版本控制</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Alvin" target="_blank" itemprop="author">Alvin</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-23T12:20:11.000Z" itemprop="datePublished"> 发表于 2015-06-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git简介"><span class="toc-number">1.</span> <span class="toc-text">Git简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Git"><span class="toc-number">2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Git"><span class="toc-number">3.</span> <span class="toc-text">使用Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支管理"><span class="toc-number">4.</span> <span class="toc-text">分支管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签管理"><span class="toc-number">5.</span> <span class="toc-text">标签管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">6.</span> <span class="toc-text">远程仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+		
+		</div>
+		
+		<p>本文记录Git的基本使用方法。（持续更新中…）<br><a id="more"></a></p>
+<h1 id="Git简介">Git简介</h1><p>在管理代码时，我们通常希望清楚得知道当前代码相对于先前的版本有哪些改动，并且希望在必要时很快回滚到先前的状态，同时我们某些时候可能需要基于相同的代码分别开发不同的功能，这些即是所谓的版本控制。版本控制在多人协同开发相同的软件时显得更加重要。</p>
+<p>早期，人们主要利用CVS或SVN等进行版本控制（SVN现在仍被很多人使用），这类版本控制系统被称为集中式版本控制系统。在集中式版本控制系统时，存在一个中心服务器，所有人的修改都提交到中心服务器。这样带来的问题时一旦中心服务器不可用，所有人都无法提交修改。</p>
+<p>和集中式版本控制系统不同的是，Git采用分布式设计的思想，即每个客户端都拥有自己的版本库，本地版本库可以和任意其它版本库进行合并操作。在实际的Git开发中，通常也有一个中心服务器，然而即使中心服务器不可用，开发者也可以互相交换修改，这样就避免了集中式版本控制系统的弊端。</p>
+<h1 id="安装Git">安装Git</h1><p>Git在Linux, Window, Mac等系统上都有客户端，用户可以点击<a href="http://git-scm.com/download/" target="_blank" rel="external">这里</a>查看。在ubuntu上安装很简单，命令如下：</p>
+<pre><code>sudo apt-<span class="keyword">get</span> install git
+</code></pre><h1 id="使用Git">使用Git</h1><ul>
+<li><p>创建项目仓库<br>有两种方法初始化版本库，第一种方法是初始化空的版本库：</p>
+<pre><code><span class="title">git</span> init
+</code></pre></li>
+</ul>
+<p>另一种方法是从远程库克隆一个版本库：</p>
+<pre><code>git clone <span class="tag">&lt;<span class="title">link</span>&gt;</span>
+</code></pre><p>项目仓库创建好之后，在仓库目录下存在一个.git目录，该目录即包含了整个git项目的数据。</p>
+<ul>
+<li><p>文件检入与检出<br>Git仓库模型大致分成三个工作区域，分别为工作目录(Working Directory)，暂存区域(Stage)以及本地仓库(History) 。Git文件在三个工作区域检入与检出的命令如下所示 :</p>
+<pre><code><span class="title">git</span> add files: 把文件拷贝到暂存区域 (工作目录-&gt;暂存区域)
+<span class="title">git</span> commit: 把暂存区域的文件提交到本地仓库(暂存区域-&gt;本地仓库)
+<span class="title">git</span> reset <span class="comment">-- files: 撤销暂存区域文件</span>
+<span class="title">git</span> checkout <span class="comment">-- files:  把文件从暂存区域覆盖本地文件，丢弃本地修改(暂存区域-&gt;工作目录)</span>
+<span class="title">git</span> commit (files | -a): 先将文件复制到暂存区域，然后再提交到本地仓库(工作目录-&gt;暂存区域-&gt;本地仓库)
+<span class="title">git</span> checkout <span class="type">HEAD</span> <span class="comment">-- files: 回滚到最后一次提交，即用本地仓库中的最后一次提交覆盖工作目录的内容</span>
+</code></pre></li>
+</ul>
+<p>为查看工作目录，暂存区域以及本地仓库的文件有哪些不同，可以利用 git diff命令：</p>
+<pre><code>git <span class="string">diff:</span> 查看工作目录与暂存区域文件的不同
+git diff --<span class="string">cached:</span> 查看暂存文件与上次提交的本地仓库快照之间的不同
+git diff <span class="string">HEAD:</span> 查看工作目录文件与上次提交的本地仓库快照之间的不同
+git diff &lt;index1&gt; &lt;index2&gt;: 查看两个不同快照之间的差别
+</code></pre><p>掌握了这些基本的使用，就可以利用Git对项目进行基本的管理。下面介绍一些更高级的特性。</p>
+<h1 id="分支管理">分支管理</h1><p>Git中存在一个默认分支称为master，可以创建更多分支，命令如下所示：</p>
+<pre><code><span class="label">git</span> <span class="keyword">branch </span>&lt;<span class="keyword">branch </span>name&gt;
+</code></pre><p>在创建分支之后，可以利用checkout命令检出分支代码，需要指出的是HEAD指针总是指向当前分支，因而当切换到分支时，HEAD指针也相应得进行切换。</p>
+<pre><code>git checkout &lt;branch <span class="property">name</span>&gt;
+</code></pre><p>分支在一定情况下需要合并，合并命令如下所示（分支合并时可能存在冲突，这时即需要人工进行冲突处理）：</p>
+<pre><code>git <span class="built_in">merge</span> &lt;branch <span class="keyword">name</span>&gt; : 和并分支，提交历史不是线性的
+git rebase &lt;branch <span class="keyword">name</span>&gt;： 衍合分支，保证提交历史是线性的
+</code></pre><p>分支和并之后可以删除分支，命令如下：</p>
+<pre><code><span class="label">git</span> <span class="keyword">branch </span>-d &lt;<span class="keyword">branch </span>name&gt;
+</code></pre><h1 id="标签管理">标签管理</h1><p>Git支持打标签，标签命令如下所示：</p>
+<pre><code><span class="tag">git</span> <span class="tag">tag</span> <span class="tag">-a</span> <span class="tag">v0</span><span class="class">.1</span><span class="class">.2</span> <span class="tag">-m</span> "<span class="tag">Release</span> <span class="tag">version</span> 0<span class="class">.1</span><span class="class">.2</span>" ： 创建标签
+<span class="tag">git</span> <span class="tag">tag</span> –<span class="tag">l</span> ： 查看标签
+<span class="tag">git</span> <span class="tag">show</span> <span class="tag">v0</span><span class="class">.1</span><span class="class">.2</span>： 查看标签等详细信息
+<span class="tag">git</span> <span class="tag">tag</span> <span class="tag">-d</span> <span class="tag">v0</span><span class="class">.1</span><span class="class">.2</span>: 删除标签
+<span class="tag">git</span> <span class="tag">push</span> <span class="tag">origin</span> <span class="tag">v0</span><span class="class">.1</span><span class="class">.2</span>：把本地标签上传到远端仓库中
+<span class="tag">git</span> <span class="tag">push</span> <span class="tag">origin</span> <span class="rule"><span class="attribute">--tags</span>:<span class="value"> 上传所有本地新增标签</span></span>
+</code></pre><h1 id="远程仓库">远程仓库</h1><p>Git是分布式版本控制系统，要实现本地仓库和远程仓库之间的数据交换，就需要利用远程仓库命令：</p>
+<pre><code>git remote：查看远程仓库
+git git push origin master: 把本地仓库的数据推送到远程仓库
+git fetch [remote-<span class="keyword">name</span>]: 获得本地仓库中没有的数据
+git pull [remote-<span class="keyword">name</span>]： 将远程分支自动合并到当前分支，相当于fetch+<span class="built_in">merge</span>命令
+</code></pre><h1 id="参考资料">参考资料</h1><p>[1] <a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-tourofgit/" target="_blank" rel="external">开源分布式版本控制工具 —— Git 之旅</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术学习/">技术学习</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/学习/">学习</a><a href="/tags/总结/">总结</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gaotao1989.github.io/2015/06/23/2015-6-23-Git-Usage/" data-title="利用Git进行版本控制 | Alvin&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/06/07/2015-6-7-How-to-build-blog/"  title="利用Github和Hexo快速搭建博客系统">
+ <strong>下一篇：</strong><br/> 
+ <span>利用Github和Hexo快速搭建博客系统
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git简介"><span class="toc-number">1.</span> <span class="toc-text">Git简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Git"><span class="toc-number">2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Git"><span class="toc-number">3.</span> <span class="toc-text">使用Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支管理"><span class="toc-number">4.</span> <span class="toc-text">分支管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签管理"><span class="toc-number">5.</span> <span class="toc-text">标签管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">6.</span> <span class="toc-text">远程仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/技术学习/" title="技术学习">技术学习<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/总结/" title="总结">总结<sup>2</sup></a></li>
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.mpi-forum.org/" target="_blank" title="MPI论坛">MPI论坛</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.mpich.org/" target="_blank" title="MPICH">MPICH</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> Welcome to visit my blog! <br/>
+			Thank you!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/gaotao1989" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gaotao1989@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="Alvin">Alvin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

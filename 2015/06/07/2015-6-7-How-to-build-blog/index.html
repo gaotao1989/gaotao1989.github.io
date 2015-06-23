@@ -53,10 +53,11 @@
 					
 					<li>
  					
-						<form class="search">
-							<label>Search</label>
-						<input type="text" id="ts-search-input" name="q" size="30" placeholder="搜索"><br>
-						</form>
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gaotao1989.github.io">
+					</form>
 					
 					</li>
 				</ul>
@@ -170,6 +171,19 @@ tags: [tag1,tag2,tag3]    # 文章标签
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/06/23/2015-6-23-Git-Usage/" title="利用Git进行版本控制">
+  <strong>上一篇：</strong><br/>
+  <span>
+  利用Git进行版本控制</span>
+</a>
+</div>
+
+
+</nav>
+
 	
 
 </div>  
@@ -192,7 +206,7 @@ tags: [tag1,tag2,tag3]    # 文章标签
 		<ul>
 		
 		  
-			<li><a href="/categories/技术学习/" title="技术学习">技术学习<sup>1</sup></a></li>
+			<li><a href="/categories/技术学习/" title="技术学习">技术学习<sup>2</sup></a></li>
 		  
 		
 		</ul>
@@ -205,11 +219,13 @@ tags: [tag1,tag2,tag3]    # 文章标签
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/学习/" title="学习">学习<sup>1</sup></a></li>
+				<li><a href="/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+				<li><a href="/tags/总结/" title="总结">总结<sup>2</sup></a></li>
+			
+		
 			
 		
 		</ul>
@@ -436,23 +452,6 @@ $(document).ready(function(){
 <!-- MathJax End -->
 
 <!-- Tiny_search Begin -->
-
-<script>
-var option = {
-  engineKey: 'alvin-blog'
-};
-(function(w,d,t,u,n,s,e){
-  s = d.createElement(t);
-  s.src = u;
-  s.async = 1;
-  w[n] = function(r){
-    w[n].opts = r;
-  };
-  e = d.getElementsByTagName(t)[0];
-  e.parentNode.insertBefore(s, e);
-})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
-_ts(option);
-</script>
 
 <!-- Tiny_search End -->
 
